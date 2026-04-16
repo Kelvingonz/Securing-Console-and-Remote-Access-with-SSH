@@ -12,16 +12,12 @@ hostname ROUTER-DISTRIBUTION-1
 !
 !
 !
-!
 ip cef
 no ipv6 cef
 !
-
-
+!
 !
 spanning-tree mode pvst
-!
-!
 !
 !
 !
