@@ -4,8 +4,8 @@ Building configuration...
 Current configuration : 1083 bytes
 !
 version 15.0
-service timestamps log datetime msec
-service timestamps debug datetime msec
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
 no service password-encryption
 !
 hostname SWITCH-ACCESS-1
