@@ -1,2 +1,2 @@
-<img width="1200" height="560" alt="R1 (Before)" src="https://github.com/user-attachments/assets/b0dcbf70-4a07-4562-8d85-89dc100009e5" />
+<img width="1315" height="680" alt="README" src="https://github.com/user-attachments/assets/5fb8b26b-efdb-4c7e-9357-6047d8972479" />
 # Securing-Console-and-Remote-Access-with-SSH
