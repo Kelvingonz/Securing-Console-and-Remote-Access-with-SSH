@@ -1,0 +1,67 @@
+ROUTER-DISTRIBUTION-2#show run
+Building configuration...
+
+Current configuration : 772 bytes
+!
+version 15.1
+service timestamps log datetime msec
+service timestamps debug datetime msec
+no service password-encryption
+!
+hostname ROUTER-DISTRIBUTION-2
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ ip address 10.0.0.2 255.255.255.252
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ ip address 172.16.1.254 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/2
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+ip classless
+ip route 172.16.0.0 255.255.255.0 10.0.0.1 
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+end
