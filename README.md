@@ -29,11 +29,11 @@ As you can see at the end of my demonstration the Console Port Security has alre
 
 Had I not configured it, anyone would be able plug into the device's CLI User EXEC mode and instantly get information like:
 
-IP addresses
+- IP addresses
 
-Interface status
+- Interface status
 
-Device type
+- Device type
 
 ### #IMPORTANT TIP#
 Not shown in this project but you should ALWAYS add extra security towards privileged (admin-level/EXEC) access
