@@ -3,7 +3,7 @@
 # Securing-Console-Port-and-Remote-Access-with-SSH
 
 
-Step 1 
+# Step 1: Identify Serial line 
 - Connect the Console Cable (RJ-45 to USB in my case) on the port labeled "console" on the Router/Switch(RJ-45 side), and the USB side on the PC
 - Open the application "Device Manager" on your local computer, Click on the PORTS (COM &LPT) section, And look for "USB Serial Port (COM?)" example: COM5, COM3.
 - Open a terminal emulator (PuTTY, Tera Term,etc..), Choose Serial NOT SSH OR TELNET, Set the COM port number to the one found in Device Manager (example: COM5, COM3)
@@ -11,7 +11,7 @@ Step 1
 <img width="959" height="690" alt="Device Manager-Putty" src="https://github.com/user-attachments/assets/cf5a7e72-0764-41d5-b71c-ad979ff275a4" type="video/mp4"> </video>
 
 
-Real life example:
+# Step 1 Video Example:
 
 <table>
   <tr>
@@ -35,10 +35,12 @@ Interface status
 Device type
 
 ### #IMPORTANT TIP#
-You should ALWAYS add extra security towards privileged (admin-level/EXEC) access
+Not shown in this project but you should ALWAYS add extra security towards privileged (admin-level/EXEC) access
 using the command "enable secret YourPassword" in configuration terminal
 
-Best practices is having seperate password for both. User EXEC mode allows read-only access, and Privileged EXEC mode allows for full device configurations.
+Best practices is having seperate passwords for both. User EXEC mode allows read-only access, and Privileged EXEC mode allows for full device configurations.
+
+Additionally, many enterprises also use External AAA servers such as RADIUS / TACACS+ to have better control over the level of privilege users have and what they can do inside the devices.
 
   </td>
   </tr>
