@@ -1,4 +1,4 @@
-In this project I will be using Cisco Packet Tracer to.......
+In this project I will be using Cisco Packet Tracer to show how to implement terminal line security on network devices using text and video demonstrations. If you want a more realistic environment without physical equipment and less configuration limitations then you can use GNS3 or Eve-NG with VMware Workstation Pro, however due to the simplicity of this project and those other applications being prone to crashes and slower performance I choose Cisco Packet Tracer.
 
 <img width="1015" height="556" alt="README1" src="https://github.com/user-attachments/assets/b68ce077-b49d-433b-bd6a-33947d529cad" />
 
