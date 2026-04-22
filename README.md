@@ -43,17 +43,55 @@ Had I not configured it, anyone would be able plug into the device's CLI User EX
 - Device type
 
 ### #IMPORTANT TIP#
-Not shown in this project but you should ALWAYS add extra security towards privileged (admin-level/EXEC) access
-using the command "enable secret YourPassword" in configuration terminal
+You should ALWAYS add extra security towards privileged EXEC mode access
+using the command "enable secret StrongPasswordHere" in configuration terminal. I will demonstrate it on the last step of this project.
 
-Best practices is having seperate passwords for both. User EXEC mode allows read-only access, and Privileged EXEC mode allows for full device configurations.
+Best practices is having seperate passwords for both. User EXEC mode allows read-only access, and Privileged EXEC mode allows for device configurations.
 
 Additionally, many enterprises also use External AAA servers such as RADIUS / TACACS+ to have better control over the level of privilege users have and what they can do inside the devices.
-
   </td>
   </tr>
 </table>
 
+# Step 2: Console Port Security (Local Physical Access) 
+Goal: Prevent unauthorized people from plugging into the device and getting CLI access.
+<img width="1271" height="527" alt="Step2" src="https://github.com/user-attachments/assets/95a8c2c6-6bbe-4086-85cb-20dbb27c566d" />
 
+Inside the CLI:
+<table>
+  <tr>
+    <td>
+      <img src="https://github.com/user-attachments/assets/fe179fa8-ad3d-4f00-ae24-c7609079f6db" width="750" height="627"/>
+    </td>
+    <td>
+      <b>COMMANDS</b><br><br>
+>enable <br>   
+-Enter Priviledged EXEC Mode
+      
+#configure terminal <br>
+-Enter Configuration terminal .
 
+(Config)#service password-encryption <br>
+-Encrypts all future plaintext passwords.
+
+(config)#username kgonzalez secret StrongPasswordHere <br>
+-Creates local user with encrypted password.
+
+(config)#line console 0 <br>
+-Enter console line 0. Most network devices only have one console port/interface labeled 0.
+
+(config-line)#login local <br>
+-Uses username/password for console login authentication.
+
+(config-line)#exec-timeout 5 0 <br>
+-kicks users who have been inactive for 5 minutes.
+
+(config-line)#logging synchronous <br>
+-Optional. Cleaner CLI, System logs and debug messages do not interrupt your typing.
+
+(config-line)#do write <br>
+-Save configuration.
+  </td>
+  </tr>
+</table>
 
