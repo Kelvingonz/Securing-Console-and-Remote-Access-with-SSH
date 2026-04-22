@@ -1,4 +1,4 @@
-# Securing-Console-Port-and-Remote-Access-with-SSH
+# Securing-Console-Port-and-Remote-Access-with-SSH and ACL
 
 In this project I will be using Cisco Packet Tracer to show how to implement terminal line security on network devices using text and video demonstrations. If you want a more realistic environment without real physical equipment and less configuration limitations then you can use GNS3 or Eve-NG with VMware Workstation Pro, however due to the simplicity of this project, and those other applications requiring more resources/setup while being prone to crashes I choose Cisco Packet Tracer.
 
