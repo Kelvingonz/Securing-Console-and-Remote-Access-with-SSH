@@ -114,9 +114,7 @@ Goals:
 - Configured RSA keys
 - Secured VTY lines with local authentication
 
-
-
-https://github.com/user-attachments/assets/f4fad60c-c24e-47d4-ada3-ca2630692238
+https://github.com/user-attachments/assets/0ed4f9c0-73a9-4acc-8547-9778e5f33cd4
 
 
   CLI:
