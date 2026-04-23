@@ -1,14 +1,14 @@
 # Securing Console Port and Remote Access with SSH and ACL
 
-In this project I will be using Cisco Packet Tracer to show how to implement terminal line security on network devices using text and video demonstrations. If you want a more realistic environment without real physical equipment and less configuration limitations then you can use GNS3 or Eve-NG with VMware Workstation Pro, however due to the simplicity of this project, and those other applications requiring more resources/setup while being prone to crashes I choose Cisco Packet Tracer.
+In this project I will be using Cisco Packet Tracer to show how to implement terminal line security for Switches/Routers I pre-configured to mimick a small enterprise network. If you want a more realistic environment without real physical equipment and less configuration limitations then you can use GNS3 or Eve-NG with VMware Workstation Pro, however due to the simplicity of this project, and those other applications requiring more resources/setup while being prone to crashes I choose Cisco Packet Tracer.
 
 <img width="1015" height="556" alt="README1" src="https://github.com/user-attachments/assets/b68ce077-b49d-433b-bd6a-33947d529cad" />
 
 ## Tasks
 
-- Kelvin(Administrator) finds out that anyone can access the terminal lines(CLI) of the switches/routers in the network above
-- Physically go to each device location with laptop to configure Console Port Security (Local Physical Access) and secure remote access (SSH)
-- Only Administator host 172.16.1.1 will be permitted remote access on the network devices via Access Control List (ACL)
+- Secure device management by requiring authentication on the console port
+- Enabling encrypted SSH access instead of Telnet(insecure/unencrypted)
+- Restricting remote access so only a single trusted host (Administrator -172.16.1.1) can connect using an ACL.
 
 
 # Step 1: Identify Serial line 
@@ -54,7 +54,10 @@ Additionally, many enterprises also use External AAA servers such as RADIUS / TA
 </table>
 
 # Step 2: Console Port Security (Local Physical Access) 
-Goal: Prevent unauthorized people from plugging into the device and getting CLI access.
+Goals: 
+- Prevent unauthorized physical access
+- Configured password / local authentication
+- Idle timeout enforced
 <img width="1271" height="527" alt="Step2" src="https://github.com/user-attachments/assets/95a8c2c6-6bbe-4086-85cb-20dbb27c566d" />
 
 ## INSIDE THE CLI OF SWITCH-ACCESS-1:
@@ -100,8 +103,52 @@ Goal: Prevent unauthorized people from plugging into the device and getting CLI 
   </tr>
 </table>
 
-##  REPEAT STEP 2 IN SWITCH ACCESS 2 AND DISTRIBUTION ROUTERS
+##  REPEATED STEP 2 IN SWITCH-ACCESS-2 AND DISTRIBUTION ROUTERS
 
 # Step 3:   SSH Remote Access (Secure Remote Management)
-Goal: Allow secure remote login using Secure Shell protocol (instead of Telnet)
+Goals: 
+- Enabled SSH v2
+- Disabled Telnet
+- Configured RSA keys
+- Secured VTY lines with local authentication
+
+
+
+https://github.com/user-attachments/assets/f4fad60c-c24e-47d4-ada3-ca2630692238
+
+
+  CLI:
+  <img src="https://github.com/user-attachments/assets/230d8ccf-6509-4ebd-b83f-308781384a3e"  width="592" height="451" />
+
+ <b>COMMAND SUMMARY</b>
+ 
+(config)#hostname ROUTER-DISTRIBUTION-2 <br>
+Not shown in video/photo because I had already preconfigured it. <br>
+-Gives device a name. Required for generating SSH keys.<br>
+
+(config)#ip domain-name R2.domain.local <br>
+-Allows for DNS Resolution, as well as security certificates like SSH, IPsec, HTTPS.
+
+(config)#crypto key generate rsa <br>
+-Generates RSA keys used for SSH encryption. 2048 = key size (minimum standard today)
+
+(config)#line vty 0 15 <br>
+-Target virtual terminal lines (remote access sessions). 0 15 = Allows 15 simultaneous SSH sessions. Not the same as line console 0 (physical access).
+
+(config-line)#transport input ssh ssh<br>
+-Disables Telnet (insecure/unencrypted). Allows only encrypted SSH connections.
+
+(config-line)#login local <br>
+-Use local usernames/passwords. Without this, login won’t work even if users exist.
+
+(config)#ip ssh version 2 <br>
+-Forces SSH version 2. More secure than version 1 (outdated).
+
+##  REPEATED STEP 3 IN DISTRIBUTION-ROUTER-1 AND ACCESS SWITCHES EXCEPT DIFFERENT DOMAIN NAMES
+DISTRIBUTION-ROUTER-1 = R1.domain.local
+DISTRIBUTION-ROUTER-2 = R2.domain.local
+SWITCH-ACCESS-1 = SW1.domain.local
+SWITCH-ACCESS-2 = SW2.domain.local
+
+
 
