@@ -57,19 +57,24 @@ Additionally, many enterprises also use External AAA servers such as RADIUS / TA
 Goal: Prevent unauthorized people from plugging into the device and getting CLI access.
 <img width="1271" height="527" alt="Step2" src="https://github.com/user-attachments/assets/95a8c2c6-6bbe-4086-85cb-20dbb27c566d" />
 
-Inside the CLI:
+## INSIDE THE CLI OF SWITCH-ACCESS-1:
 <table>
   <tr>
     <td>
-      <img src="https://github.com/user-attachments/assets/fe179fa8-ad3d-4f00-ae24-c7609079f6db" width="750" height="627"/>
+      Enter these commands:
+      <img src="https://github.com/user-attachments/assets/49f921df-2d21-4e9a-b6ff-18a84a1ef01a"  width="1271" height="527" /> <br><br>
+      Result:<br><br>
+      <img src="https://github.com/user-attachments/assets/47b82991-8b38-44c3-b12a-482c1026d9de" />
+      <br><br>
+      As you can see above User EXEC Mode has now been configured with username/password authentication and unathorized users cant login anymore.
     </td>
     <td>
-      <b>COMMANDS</b><br><br>
+      <b>COMMAND SUMMARY</b><br><br>
 >enable <br>   
--Enter Priviledged EXEC Mode
-      
+-Enter Priviledged EXEC Mode<br><br>
+
 #configure terminal <br>
--Enter Configuration terminal .
+-Enter Global Configuration Mode
 
 (Config)#service password-encryption <br>
 -Encrypts all future plaintext passwords.
@@ -94,4 +99,6 @@ Inside the CLI:
   </td>
   </tr>
 </table>
+
+##  REPEAT STEP 2 IN SWITCH ACCESS 2 AND DISTRIBUTION ROUTERS
 
