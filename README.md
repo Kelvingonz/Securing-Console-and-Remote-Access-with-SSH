@@ -1,6 +1,6 @@
 # Securing Console Port and Remote Access with SSH and ACL
 
-In this project I will be using Cisco Packet Tracer to show how to implement terminal line security for Switches/Routers I pre-configured to mimick a small enterprise network. If you want a more realistic environment without real physical equipment and less configuration limitations then you can use GNS3 or Eve-NG with VMware Workstation Pro, however due to the simplicity of this project, and those other applications requiring more resources/setup while being prone to crashes I choose Cisco Packet Tracer.
+In this project I will be using Cisco Packet Tracer to show how to implement terminal line security for Switches/Routers I pre-configured to mimick a small enterprise network. If you want a more realistic environment without real physical equipment and less limitations then you can use GNS3 or Eve-NG with VMware Workstation Pro, however due to the simplicity of this project, and those other applications requiring more resources/setup while being prone to crashes I choose Cisco Packet Tracer.
 
 <img width="1015" height="556" alt="README1" src="https://github.com/user-attachments/assets/b68ce077-b49d-433b-bd6a-33947d529cad" />
 
@@ -105,7 +105,7 @@ Goals:
 
 ##  REPEATED STEP 2 IN SWITCH-ACCESS-2 AND DISTRIBUTION ROUTERS
 
-# Step 3:   SSH Remote Access (Secure Remote Management)
+# Step 3: SSH Remote Access (Secure Remote Management)
 Goals: 
 - Enabled SSH v2
 - Disabled Telnet
@@ -149,6 +149,9 @@ DISTRIBUTION-ROUTER-1 = R1.domain.local<br>
 DISTRIBUTION-ROUTER-2 = R2.domain.local<br>
 SWITCH-ACCESS-1 = SW1.domain.local<br>
 SWITCH-ACCESS-2 = SW2.domain.local<br>
+
+# Step 3.5: Loopback Addresses and Swich Virtual Interfaces
+Goal: Create loopbacks and SVIs to have reliable SSH points. Loopbacks never go down, and switches dont route by default so it needs a layer 3 interface.
 
 
 
