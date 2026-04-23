@@ -151,7 +151,7 @@ SWITCH-ACCESS-1 = SW1.domain.local<br>
 SWITCH-ACCESS-2 = SW2.domain.local<br>
 
 # Step 3.5: Loopback Addresses and Swich Virtual Interfaces
-Goal: Create loopbacks and SVIs to have reliable SSH points. Loopbacks never go down, and switches dont route by default so it needs a layer 3 interface.
+Goal: Create loopbacks and SVIs to have reliable SSH access. Loopbacks never go down, and switches dont route by default so it needs a layer 3 interface.
 
 
 
