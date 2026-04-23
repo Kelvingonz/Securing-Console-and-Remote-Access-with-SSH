@@ -102,3 +102,6 @@ Goal: Prevent unauthorized people from plugging into the device and getting CLI 
 
 ##  REPEAT STEP 2 IN SWITCH ACCESS 2 AND DISTRIBUTION ROUTERS
 
+# Step 3:   SSH Remote Access (Secure Remote Management)
+Goal: Allow secure remote login using Secure Shell protocol (instead of Telnet)
+
