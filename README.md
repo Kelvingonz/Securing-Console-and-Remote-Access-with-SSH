@@ -145,10 +145,10 @@ Not shown in video/photo because I had already preconfigured it. <br>
 -Forces SSH version 2. More secure than version 1 (outdated).
 
 ##  REPEATED STEP 3 IN DISTRIBUTION-ROUTER-1 AND ACCESS SWITCHES EXCEPT DIFFERENT DOMAIN NAMES
-DISTRIBUTION-ROUTER-1 = R1.domain.local
-DISTRIBUTION-ROUTER-2 = R2.domain.local
-SWITCH-ACCESS-1 = SW1.domain.local
-SWITCH-ACCESS-2 = SW2.domain.local
+DISTRIBUTION-ROUTER-1 = R1.domain.local<br>
+DISTRIBUTION-ROUTER-2 = R2.domain.local<br>
+SWITCH-ACCESS-1 = SW1.domain.local<br>
+SWITCH-ACCESS-2 = SW2.domain.local<br>
 
 
 
