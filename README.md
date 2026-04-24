@@ -210,6 +210,9 @@ Created a management interfaces (SVI) on VLAN 1 <br> for both switches using an 
 
 # Step 4: Restrict SSH Access to One Host (ACL)
 
+https://github.com/user-attachments/assets/5ec530bb-6449-4e3a-9e28-93a4cba65d56
+
+
 ## REPEATED STEP 4 IN IN SWITCH-ACCESS-2 AND DISTRIBUTION ROUTERS
 
 <b>COMMAND SUMMARY</b><br><br>
