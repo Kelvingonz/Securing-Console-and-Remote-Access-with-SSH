@@ -32,8 +32,6 @@ If you want a more realistic environment without real physical equipment and les
   </td>
     <td width="00%">
 
-### #PLEASE READ# 
-
 As you can see at the end of my demonstration the Console Port Security has already been set with user authentication. In this project I will show how to enable it for physical and remote access(SSH)
 
 Had I not configured it, anyone would be able plug into the device's CLI User EXEC mode and instantly get information like:
@@ -44,13 +42,6 @@ Had I not configured it, anyone would be able plug into the device's CLI User EX
 
 - Device type
 
-### #IMPORTANT TIP#
-You should ALWAYS add extra security towards privileged EXEC mode access
-using the command "enable secret StrongPasswordHere" in configuration terminal. I will demonstrate it on the last step of this project.
-
-Best practices is having seperate passwords for both. User EXEC mode allows read-only access, and Privileged EXEC mode allows for device configurations.
-
-Additionally, many enterprises also use External AAA servers such as RADIUS / TACACS+ to have better control over the level of privilege users have and what they can do inside the devices.
   </td>
   </tr>
 </table>
@@ -106,6 +97,21 @@ Goals:
 </table>
 
 ##  REPEATED STEP 2 IN SWITCH-ACCESS-2 AND DISTRIBUTION ROUTERS
+
+# Step 2.5: Privileged EXEC mode Hardening
+
+<img width="503" height="78" alt="enablesecret" src="https://github.com/user-attachments/assets/52316645-c230-4430-8150-c4f8d0d7a9a6" />
+
+Used Command "enable secret" to provide encrypted password towards Privileged EXEC mode.
+
+##  REPEATED STEP 2.5 IN SWITCH-ACCESS-2 AND DISTRIBUTION ROUTERS
+
+### #IMPORTANT #
+You should ALWAYS use this command for extra security towards privileged EXEC mode access. It is also neccesary for SSH access.
+
+Best practices is having seperate passwords for both. User EXEC mode allows read-only access, and Privileged EXEC mode allows for device configurations.
+
+Additionally, many enterprises also use External AAA servers such as RADIUS / TACACS+ to have better control over the level of privilege users have and what they can do inside the devices.
 
 # Step 3: SSH Remote Access (Secure Remote Management)
 Goals: 
@@ -187,17 +193,30 @@ Also perfect to have as a Routing ID for routing protocols (OSPF/BGP) to prevent
       <br><br>
     </td>
     <td>
-Created a management interfaces (SVI) on VLAN 99 <br> for both switches using an ip address within the same subnet as the default gateway(R1)<br>
+Created a management interfaces (SVI) on VLAN 1 <br> for both switches using an ip address within the same subnet as the default gateway(R1)<br>
 <br>
  The ip default-gateway command lets the switch reach other networks. <br>
    <br>    
-  Similar to loopbacks, the SVI ip address will be used to access the device remotely (SSH). reach other networks.
+  Similar to loopbacks, the SVI ip address will be used to access the device remotely (SSH). reach other networks.<br>
     <br>
+   ## IMPORTANT ## <br>
+    Ideally its best not use vlan1(native) for security measures, and instead create a different one like vlan99 for management<br>
+    <br>However I did not enable trunk links to allow inter-vlan routing in this small project (A physical interface must also be up for SVI to work) <br>
 
 
   </td>
   </tr>
 </table>
+
+# Step 4: Restrict SSH Access to One Host (ACL)
+
+## REPEATED STEP 4 IN IN SWITCH-ACCESS-2 AND DISTRIBUTION ROUTERS
+
+<b>COMMAND SUMMARY</b><br><br>
+(config)# ip access-list standard MANAGEMENT = Creates an named ACL list called MANAGEMENT. Filters based only on source IP address.<br>
+(config-std-nacl)#permit host 172.16.1.1 = Adds rule to ACL, allows only the exact ip 172.16.1.1<br>
+(config-std-nacl)#line vty 0 15 = Enter virtual terminal lines configuration mode (SSH/Telnet)<br>
+(config-line)#access-class MANAGEMENT in = Applies ACL to remote login access, filtering traffic coming into the device via vty<br>
 
 
 
