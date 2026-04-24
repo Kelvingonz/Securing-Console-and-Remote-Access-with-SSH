@@ -152,7 +152,54 @@ SWITCH-ACCESS-2 = SW2.domain.local<br>
 
 # Step 3.5: Loopback Addresses and Switch Virtual Interfaces
 Goal: <br>
-Create loopbacks and SVIs to have reliable SSH access. Loopbacks never go down, additionally they are also used for routing(OSPF/BGP), and switches dont route by default so it needs a layer 3 interface.
+Create loopbacks and SVIs to have reliable SSH access. Loopback interfaces never go down, and switches dont route by default so it needs a layer 3 interface.
+
+
+
+<table>
+  <tr>
+    <td>
+      ROUTER-DISTRIBUTION-1 / Loopback Address Configuration:
+ <img width="1332" height="450" alt="r1loopback" src="https://github.com/user-attachments/assets/3b87cd33-694c-4576-93aa-1cbabde60900" /> <br><br>
+      ROUTER-DISTRIBUTION-2 / Loopback Address Configuration:<br><br>
+      <img width="1327" height="450" alt="r2loopback" src="https://github.com/user-attachments/assets/b87aad14-6bff-4191-bf9a-c3054d9fe252" />
+      <br><br>
+    </td>
+    <td>
+A loopback interface is always “up” as long as the device is on.  <br>
+      <br>
+This allows you to have a stable SSH target instead of remoting from an physical interface that can go down easier.<br>
+<br>
+Also perfect to have as a Routing ID for routing protocols (OSPF/BGP) to prevent instability/reconvergence issues<br>
+
+  </td>
+  </tr>
+</table>
+<br>
+
+<table>
+  <tr>
+    <td>
+      SWITCH-ACCESS-1 / SVI Configuration:
+<img width="1080" height="200" alt="Switch1-SVI" src="https://github.com/user-attachments/assets/6976bf98-a286-4f45-9e23-012cf4b136cb" /> <br><br>
+      SWITCH-ACCESS-2 / SVI Configuration:<br><br>
+      <img width="1087" height="200" alt="Switch2-SVI" src="https://github.com/user-attachments/assets/2024abde-06cd-40d4-b710-95956198ecc1" />
+      <br><br>
+    </td>
+    <td>
+Created a management interfaces (SVI) on VLAN 99 <br> for both switches using an ip address within the same subnet as the default gateway(R1)<br>
+<br>
+ The ip default-gateway command lets the switch reach other networks. <br>
+   <br>    
+  Similar to loopbacks, the SVI ip address will be used to access the device remotely (SSH). reach other networks.
+    <br>
+
+
+  </td>
+  </tr>
+</table>
+
+
 
 
 
