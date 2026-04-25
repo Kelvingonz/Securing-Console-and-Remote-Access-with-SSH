@@ -48,7 +48,7 @@ Had I not configured it, anyone would be able plug into the device's CLI User EX
 
 # Step 2: Console Port Security (Local Physical Access) 
 Goals: 
-- Prevent unauthorized physical access
+- Prevent unauthorized physical access to Switches and Routers.
 - Configured password / local authentication
 - Idle timeout enforced
 <img width="1271" height="527" alt="Step2" src="https://github.com/user-attachments/assets/95a8c2c6-6bbe-4086-85cb-20dbb27c566d" />
@@ -65,7 +65,7 @@ Goals:
       As you can see above User EXEC Mode has now been configured with username/password authentication and unathorized users cant login anymore without credentials.
     </td>
     <td>
-      <b>COMMAND SUMMARY</b><br><br>
+      <b>COMMANDS EXPLANATION </b><br><br>
 >enable <br>   
 -Enter Priviledged EXEC Mode<br><br>
 
@@ -126,14 +126,14 @@ https://github.com/user-attachments/assets/0ed4f9c0-73a9-4acc-8547-9778e5f33cd4
   CLI:
   <img src="https://github.com/user-attachments/assets/230d8ccf-6509-4ebd-b83f-308781384a3e"  width="592" height="451" />
 
- <b>COMMAND SUMMARY</b>
+ <b>COMMANDS EXPLANATION</b>
  
 (config)#hostname ROUTER-DISTRIBUTION-2 <br>
 Not shown in video/photo because I had already preconfigured it. <br>
 -Gives device a name. Required for generating SSH keys.<br>
 
 (config)#ip domain-name R2.domain.local <br>
--Allows for DNS Resolution, as well as security certificates like SSH, IPsec, HTTPS.
+-Allows for DNS Resolution, required for SSH keys and other security certificates like IPsec, and HTTPS.
 
 (config)#crypto key generate rsa <br>
 -Generates RSA keys used for SSH encryption. 2048 = key size (minimum standard today)
@@ -215,13 +215,13 @@ https://github.com/user-attachments/assets/5ec530bb-6449-4e3a-9e28-93a4cba65d56
 
 ## REPEATED STEP 4 IN IN SWITCH-ACCESS-2 AND DISTRIBUTION ROUTERS
 
-<b>COMMAND SUMMARY</b><br><br>
+<b>COMMAND EXPLANATION</b><br><br>
 (config)# ip access-list standard MANAGEMENT = Creates an named ACL list called MANAGEMENT. Filters based only on source IP address.<br>
 (config-std-nacl)#permit host 172.16.1.1 = Adds rule to ACL, allows only the exact ip 172.16.1.1<br>
 (config-std-nacl)#line vty 0 15 = Enter virtual terminal lines configuration mode (SSH/Telnet)<br>
 (config-line)#access-class MANAGEMENT in = Applies ACL to remote login access, filtering traffic coming into the device via vty<br>
 
+# Step 4: Restrict SSH Access to One Host (ACL)
 
-
-
+# VERIFICATION
 
