@@ -14,7 +14,7 @@ If you want a more realistic environment without real physical equipment and les
 
 
 # Step 1: Identify Serial line 
-- Connect the Console Cable (RJ-45 to USB in my case) on the port labeled "console" on the Router/Switch(RJ-45 side), and the USB side on the PC
+- Connect the Rollover/Console Cable (RJ-45 to USB in my case) on the port labeled "console" on the Router/Switch(RJ-45 side), and the USB side on the PC
 - Open the application "Device Manager" on your local computer, Click on the PORTS (COM &LPT) section, And look for "USB Serial Port (COM?)" example: COM5, COM3.
 - Open a terminal emulator (PuTTY, Tera Term,etc..), Choose Serial NOT SSH OR TELNET, Set the COM port number to the one found in Device Manager (example: COM5, COM3)
   
@@ -62,7 +62,7 @@ Goals:
       Result:<br><br>
       <img src="https://github.com/user-attachments/assets/47b82991-8b38-44c3-b12a-482c1026d9de" />
       <br><br>
-      As you can see above User EXEC Mode has now been configured with username/password authentication and unathorized users cant login anymore.
+      As you can see above User EXEC Mode has now been configured with username/password authentication and unathorized users cant login anymore without credentials.
     </td>
     <td>
       <b>COMMAND SUMMARY</b><br><br>
@@ -145,7 +145,7 @@ Not shown in video/photo because I had already preconfigured it. <br>
 -Disables Telnet (insecure/unencrypted). Allows only encrypted SSH connections.
 
 (config-line)#login local <br>
--Use local usernames/passwords. Without this, login won’t work even if users exist.
+-SSH does not work with default login. You must use LOGIN LOCAL (Local usernames/passwords). Without this, login won’t work even if users exist.
 
 (config)#ip ssh version 2 <br>
 -Forces SSH version 2. More secure than version 1 (outdated).
