@@ -1,6 +1,6 @@
 #  Securing Local and Remote Access with Console Authentication, SSH, and ACLs
 
-In this project I will be using Cisco Packet Tracer to show how to implement console port security and safe remote access for Switches/Routers I pre-configured in order mimick a small enterprise network. Documentation for all configurations including Vlans, static routing, etc are included in the folders above. 
+In this project I will be using Cisco Packet Tracer to show how to implement console port security and secure remote access for Switches/Routers I pre-configured in order mimick a small enterprise network. Documentation for all configurations are included above. 
 
 If you want a more realistic environment without real physical equipment and less limitations then you can use GNS3 or Eve-NG with VMware Workstation Pro, however due to the simplicity of this project, and those other applications requiring more resources/setup while being prone to crashes I choose Cisco Packet Tracer.
 
