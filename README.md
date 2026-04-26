@@ -1,8 +1,8 @@
-#  Securing Local and Remote Access with Console Authentication, SSH, and ACLs
+#  Securing Local and Remote Access with Console Authentication, SSH, and ACL
 
 ##Recommended to view on a desktop/laptop and not Mobile due to app bugs not showing video clips on certain steps
 
-In this project I use Cisco Packet Tracer to show how to implement Console port security (Local Physical Access) and secure remote access (SSH + ACLs) on switches and routers, simulating enterprise networks. The goal is to prevent unauthorized access while ensuring secure device management. Full Configurations of the devices are included in the folder above. 
+In this project I use Cisco Packet Tracer to show how to implement Console port security (Local Physical Access) and secure remote access (SSH + ACL) on switches and routers, simulating enterprise networks. The goal is to prevent unauthorized access while ensuring secure device management. Full Configurations of the devices are included in the folder above. 
 
 Keep in mind that some steps from this page are GIFs and not images that you can watch by clicking on the play button. GIFs, Videos, and Screenshots are included for everything.
 
