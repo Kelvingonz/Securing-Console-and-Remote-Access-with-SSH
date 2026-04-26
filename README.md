@@ -176,7 +176,7 @@ Create loopbacks and SVIs to have reliable SSH access. Loopback interfaces never
       <br><br>
     </td>
     <td>
-      NOTE: Loopback isnt reachable to other networks by default so either dynamic routing like ospf or static routing is needed. <br><br> I Used #ip route 10.255.255.1 255.255.255.255 10.0.0.1 on R2 to allow reachability from Admin's subnet<br><br>
+      NOTE: Loopback isnt reachable to other networks by default so either dynamic routing like ospf or static routing is needed. <br><br> I Used static #ip route 10.255.255.1 255.255.255.255 10.0.0.1 on R2 to allow reachability from Admin's subnet<br><br>
 A loopback interface is always “up” as long as the device is on since its virtual. This allows me to have a reliable SSH ip address to target instead of rather from an physical interface IP that could get damaged in real life.<br>
 <br><br>
 Also perfect to have as a Routing ID for routing protocols (OSPF/BGP) to prevent instability/reconvergence issues<br>
@@ -200,7 +200,7 @@ Created a management interfaces (SVI) on VLAN 1 <br> for both switches using an 
 <br>
  The ip default-gateway command lets the switch reach other networks. <br>
    <br>    
-  Similar to loopbacks, the SVI ip address will be used to access the device remotely (SSH). reach other networks.<br>
+  Similar to loopbacks, the SVI ip address will be used to access the device remotely (SSH). <br>
     <br>
    ## IMPORTANT ## <br>
     Ideally its best not use vlan1(native) for security measures, and instead create a different one like vlan99 for management<br>
