@@ -222,20 +222,23 @@ https://github.com/user-attachments/assets/5ec530bb-6449-4e3a-9e28-93a4cba65d56
 (config-std-nacl)#line vty 0 15 = Enter virtual terminal lines configuration mode (SSH/Telnet)<br>
 (config-line)#access-class MANAGEMENT in = Applies ACL to remote login access, filtering traffic coming into the device via vty<br>
 
-# VERIFICATION
+# Final Step: Verification
 
 The command to SSH from an end user device after configuring it is "ssh -l username ip address"<br>
 In my case I used "ssh -l kgonzalez 10.255.255.1" to SSH into ROUTER-DISTRIBUTION-1's Loopback Address, an interface that always remains up.
 
-## SSH Approval<br>
+# ## *SSH APPROVAL* ## #
+
 
 Below you can see Administrator host 172.16.1.1 is allowed remote access.<br><br>
+## Click GIF<br>
 <img width="1226" height="618" alt="SSH-Verification-Admin" src="https://github.com/user-attachments/assets/47e15004-39a6-405d-acf6-5a84339ae479" />
 
-## SSH Refused<br>
+# ## *SSH REFUSED* ## #
+
 
 Here you can see that other hosts are not allowed into the console due to the access control list (ACL) entry, ensuring that unauthorized users cant get into the CLI even if they have the user credentials<br>
-
+## Click GIF<br>
 <img width="1102" height="618" alt="SSH-Refused" src="https://github.com/user-attachments/assets/ae56afdd-0fa3-4cbf-b26e-ba6586a951ef" />
 
 
