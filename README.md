@@ -225,8 +225,11 @@ https://github.com/user-attachments/assets/5ec530bb-6449-4e3a-9e28-93a4cba65d56
 
 <b>COMMAND EXPLANATION</b><br><br>
 (config)# ip access-list standard MANAGEMENT = Creates an named ACL list called MANAGEMENT. Filters based only on source IP address.<br>
+<br>
 (config-std-nacl)#permit host 172.16.1.1 = Adds rule to ACL, allows only the exact ip 172.16.1.1<br>
+<br>
 (config-std-nacl)#line vty 0 15 = Enter virtual terminal lines configuration mode (SSH/Telnet)<br>
+<br>
 (config-line)#access-class MANAGEMENT in = Applies ACL to remote login access, filtering traffic coming into the device via vty<br>
 
 # Final Step: Verification
