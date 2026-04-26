@@ -1,8 +1,10 @@
 #  Securing Local and Remote Access with Console Authentication, SSH, and ACLs
 
-In this project I will be using Cisco Packet Tracer to show how to implement console port security and secure remote access for Switches/Routers I pre-configured in order mimick a small enterprise network. Documentation for all configurations are included above. 
+In this project I use Cisco Packet Tracer to show how to implement console port security and secure remote access (SSH + ACLs) on switches and routers, simulating enterprise networks. The goal is to prevent unauthorized access while ensuring secure device management. Full Configurations of the devices are included in the folder above. 
 
-If you want a more realistic environment without real physical equipment and less limitations then you can use GNS3 or Eve-NG with VMware Workstation Pro, however due to the simplicity of this project, and those other applications requiring more resources/setup while being prone to crashes I choose Cisco Packet Tracer.
+Keep in mind that some steps from the front page are GIFs and not images that you can watch by clicking on the play button. GIFs, Videos, and Screenshots are included for everything.
+
+NOTE: A more realistic environment without real physical equipment would be GNS3 or Eve-NG with VMware Workstation Pro which uses real Cisco IOS images, however due to the simplicity of this project, and those other applications requiring more resources/setup while being prone to crashes I choose Packet Tracer.
 
 <img width="1015" height="556" alt="README1" src="https://github.com/user-attachments/assets/b68ce077-b49d-433b-bd6a-33947d529cad" />
 
@@ -145,7 +147,7 @@ Not shown in video/photo because I had already preconfigured it. <br>
 -Disables Telnet (insecure/unencrypted). Allows only encrypted SSH connections.
 
 (config-line)#login local <br>
--SSH does not work with default login. You must use LOGIN LOCAL (Local usernames/passwords). Without this, login won’t work even if users exist.
+-SSH does not work with default login. LOGIN LOCAL (Local usernames/passwords) must be used. Without this command, login won’t work even if users exist.
 
 (config)#ip ssh version 2 <br>
 -Forces SSH version 2. More secure than version 1 (outdated).
@@ -166,16 +168,15 @@ Create loopbacks and SVIs to have reliable SSH access. Loopback interfaces never
   <tr>
     <td>
       ROUTER-DISTRIBUTION-1 / Loopback Address Configuration:
- <img width="1332" height="450" alt="r1loopback" src="https://github.com/user-attachments/assets/3b87cd33-694c-4576-93aa-1cbabde60900" /> <br><br>
+ <img width="1532" height="650" alt="r1loopback" src="https://github.com/user-attachments/assets/3b87cd33-694c-4576-93aa-1cbabde60900" /> <br><br>
       ROUTER-DISTRIBUTION-2 / Loopback Address Configuration:<br><br>
-      <img width="1327" height="450" alt="r2loopback" src="https://github.com/user-attachments/assets/b87aad14-6bff-4191-bf9a-c3054d9fe252" />
+      <img width="1527" height="650" alt="r2loopback" src="https://github.com/user-attachments/assets/b87aad14-6bff-4191-bf9a-c3054d9fe252" />
       <br><br>
     </td>
     <td>
-A loopback interface is always “up” as long as the device is on.  <br>
-      <br>
-This allows you to have a stable SSH target instead of remoting from an physical interface that can go down easier.<br>
-<br>
+      NOTE: Loopback isnt reachable to other networks by default so either dynamic routing like ospf or static routing is needed. <br><br> I Used #ip route 10.255.255.1 255.255.255.255 10.0.0.1 on R2 to allow reachability from Admin's subnet<br><br>
+A loopback interface is always “up” as long as the device is on since its virtual. This allows me to have a reliable SSH ip address to target instead of rather from an physical interface IP that could get damaged in real life.<br>
+<br><br>
 Also perfect to have as a Routing ID for routing protocols (OSPF/BGP) to prevent instability/reconvergence issues<br>
 
   </td>
@@ -221,7 +222,21 @@ https://github.com/user-attachments/assets/5ec530bb-6449-4e3a-9e28-93a4cba65d56
 (config-std-nacl)#line vty 0 15 = Enter virtual terminal lines configuration mode (SSH/Telnet)<br>
 (config-line)#access-class MANAGEMENT in = Applies ACL to remote login access, filtering traffic coming into the device via vty<br>
 
-# Step 4: Restrict SSH Access to One Host (ACL)
-
 # VERIFICATION
+
+The command to SSH from an end user device after configuring it is "ssh -l username ip address"<br>
+In my case I used "ssh -l kgonzalez 10.255.255.1" to SSH into ROUTER-DISTRIBUTION-1's Loopback Address, an interface that always remains up.
+
+## SSH Approval<br>
+
+Below you can see Administrator host 172.16.1.1 is allowed remote access.<br><br>
+<img width="1226" height="618" alt="SSH-Verification-Admin" src="https://github.com/user-attachments/assets/47e15004-39a6-405d-acf6-5a84339ae479" />
+
+## SSH Refused<br>
+
+Here you can see that other hosts are not allowed into the console due to the access control list (ACL) entry, ensuring that unauthorized users cant get into the CLI even if they have the user credentials<br>
+
+<img width="1102" height="618" alt="SSH-Refused" src="https://github.com/user-attachments/assets/ae56afdd-0fa3-4cbf-b26e-ba6586a951ef" />
+
+
 
