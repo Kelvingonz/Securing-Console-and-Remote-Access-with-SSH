@@ -2,7 +2,7 @@
 
 In this project I use Cisco Packet Tracer to show how to implement console port security and secure remote access (SSH + ACLs) on switches and routers, simulating enterprise networks. The goal is to prevent unauthorized access while ensuring secure device management. Full Configurations of the devices are included in the folder above. 
 
-Keep in mind that some steps from the front page are GIFs and not images that you can watch by clicking on the play button. GIFs, Videos, and Screenshots are included for everything.
+Keep in mind that some steps from this page are GIFs and not images that you can watch by clicking on the play button. GIFs, Videos, and Screenshots are included for everything.
 
 NOTE: A more realistic environment without real physical equipment would be GNS3 or Eve-NG with VMware Workstation Pro which uses real Cisco IOS images, however due to the simplicity of this project, and those other applications requiring more resources/setup while being prone to crashes I choose Packet Tracer.
 
