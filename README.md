@@ -1,12 +1,11 @@
 #  Securing Local and Remote Access with Console Authentication, SSH, and ACL
 
-##Recommended to view on a desktop/laptop and not Mobile due to app bugs not showing video clips on certain steps
 
 In this project I use Cisco Packet Tracer to show how to implement Console port security (Local Physical Access) and secure remote access (SSH + ACL) on switches and routers, simulating enterprise networks. The goal is to prevent unauthorized access while ensuring secure device management. Full Configurations of the devices are included in the folder above. 
 
 Keep in mind that some steps from this page are GIFs and not images that you can watch by clicking on the play button. GIFs, Videos, and Screenshots are included for everything.
 
-NOTE: A more realistic environment without real physical equipment would be GNS3 or Eve-NG with VMware Workstation Pro which uses real Cisco IOS images, however due to the simplicity of this project, and those other applications requiring more resources/setup while being prone to crashes I choose Packet Tracer.
+NOTE: A more realistic environment without real physical equipment would be GNS3 or Eve-NG with VMware Workstation Pro which uses real Cisco IOS images, however due to the simplicity of this project I choose Packet Tracer.
 
 <img width="1015" height="556" alt="README1" src="https://github.com/user-attachments/assets/b68ce077-b49d-433b-bd6a-33947d529cad" />
 
